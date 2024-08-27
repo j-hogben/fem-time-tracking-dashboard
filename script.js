@@ -25,7 +25,7 @@ const appendItem = (element) => {
           <circle cx="18.5" cy="2.5" r="2.5" fill="#BBC0FF"/>
         </svg>
       </button>
-      <h3 class="card__title">${element.title}</h3>
+      <h2 class="card__title">${element.title}</h2>
       <p class="current-hours"></p>
       <p class="previous-hours"></p>
     </div>`;
