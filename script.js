@@ -16,16 +16,19 @@ const appendItem = (element) => {
 
   // WRITE HTML FOR EACH CONTAINER CARD
   card.innerHTML = `
-    <img src="./images/icon-${cardTitle}.svg" alt="" />
+    <img src="./images/icon-${cardTitle}.svg" alt="" class="card-background-img"/>
     <div class="card__content">
-      <button class="card__content-ellipsis">
-        <img src="./images/icon-ellipsis.svg" alt="" />
+      <button class="card__ellipsis">
+        <svg width="21" height="5" viewBox="0 0 21 5" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="2.5" cy="2.5" r="2.5" fill="#BBC0FF"/>
+          <circle cx="10.5" cy="2.5" r="2.5" fill="#BBC0FF"/>
+          <circle cx="18.5" cy="2.5" r="2.5" fill="#BBC0FF"/>
+        </svg>
+
       </button>
       <h3 class="card__title">${element.title}</h3>
-      <div class="card__content-data">
-        <p class="current-hours"></p>
-        <p class="previous-hours"></p>
-      </div>
+      <p class="current-hours"></p>
+      <p class="previous-hours"></p>
     </div>`;
 
   appContainer.appendChild(card);
@@ -51,6 +54,12 @@ const timeFrameUnits = (timeFrame) => {
 // ////////////////////////////////////////////////////////////////////////////////
 // ////////////////////////////////////////////////////////////////////////////////
 
+// FUNCTION TO RETURN HR OR HRS
+const hrOrHrs = (input) => (input === 1 ? 'hr' : 'hrs');
+
+// ////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////
+
 // FUNCTION TO UPDATE TIME FRAMES
 const updateSelectedTimeFrame = () => {
   const selectedTimeFrame = document.querySelector(
@@ -70,10 +79,12 @@ const updateSelectedTimeFrame = () => {
           const previousHours = card.querySelector('.previous-hours');
           const timeFrameSelected = dataItem.timeframes[selectedTimeFrame];
 
-          currentHours.textContent = `${timeFrameSelected.current}hrs`;
+          currentHours.textContent = `${timeFrameSelected.current}${hrOrHrs(
+            timeFrameSelected.current
+          )}`;
           previousHours.textContent = `${timeFrameUnits(selectedTimeFrame)} - ${
             timeFrameSelected.previous
-          }hrs`;
+          }${hrOrHrs(timeFrameSelected.previous)}`;
         }
       });
     })

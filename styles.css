@@ -1,0 +1,460 @@
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CSS RESET ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+/* 1. Use a more-intuitive box-sizing model. */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+/* 2. Remove default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+}
+/* 3. Improve text rendering */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+/* 4. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+/* 5. Remove built-in form typography styles */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+/* 6. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ROOT STYLES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+:root {
+  /* COLOURS */
+  --clr-darkest-blue: #0e1323;
+  --clr-card-background-blue: #1c204b;
+  --clr-purple: #7078c9;
+  --clr-lightest-purple: #bbc0ff;
+  --clr-white: #ffffff;
+
+  --clr-card-blue: #5747ea;
+  --clr-card-orange: #ff8b64;
+  --clr-card-aqua: #55c2e6;
+  --clr-card-red: #ff5e7d;
+  --clr-card-green: #4bcf82;
+  --clr-card-purple: #7335d2;
+  --clr-card-yellow: #f1c75b;
+
+  /* FONT SIZE */
+  --fs-current-hours: 2rem; /* 32px */
+  --fs-prim-heading: 1.5rem; /* 24px */
+  --fs-card-header: 1.125rem; /* 18px */
+  --fs-previous-hours: 0.9375rem; /* 15px */
+  --fs-header-p: 0.9375rem; /* 15px */
+
+  /* FONT WEIGHT */
+  --fw-medium: 500;
+  --fw-regular: 400;
+  --fw-light: 300;
+
+  /* LINE HEIGHT */
+  --lh-current-hours: 1.1875;
+  --lh-prim-heading: 1.1667;
+  --lh-card-header: 1.1667;
+  --lh-previous-hours: 1.2;
+  --lh-header-p: 1.2;
+
+  /* BORDER RADIUS */
+  --br-card: 0.9375rem; /* 15px */
+
+  /* TRANSITIONS */
+  --transition-default: all 100ms ease-in-out;
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ FONT STYLES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+body {
+  font-family: 'Rubik', sans-serif;
+  color: var(--clr-white);
+}
+
+.header__card p {
+  font-size: var(--fs-header-p);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-header-p);
+  color: var(--clr-lightest-purple);
+}
+
+.header__card h1 {
+  font-size: var(--fs-prim-heading);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-prim-heading);
+  color: var(--clr-white);
+}
+
+.header__bottom-radio label {
+  font-size: var(--fs-card-header);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-card-header);
+  color: var(--clr-purple);
+}
+
+.header__bottom-radio:has(input:checked) label {
+  color: var(--clr-white);
+}
+
+.card__title {
+  font-size: var(--fs-card-header);
+  font-weight: var(--fw-medium);
+  line-height: var(--lh-card-header);
+}
+
+.current-hours {
+  font-size: var(--fs-current-hours);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-current-hours);
+}
+
+.previous-hours {
+  font-size: var(--fs-previous-hours);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-previous-hours);
+  color: var(--clr-lightest-purple);
+}
+
+@media (min-width: 575px) {
+  :root {
+    /* FONT SIZE */
+    --fs-current-hours: 3.5rem; /* 56px */
+    --fs-prim-heading: 2.5rem; /* 40px */
+
+    /* LINE HEIGHT */
+    --lh-current-hours: 1.1786;
+    --lh-prim-heading: 1.175;
+  }
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GENERAL STYLES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+body {
+  background-color: var(--clr-darkest-blue);
+}
+
+main {
+  padding: 5rem 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  main {
+    display: grid;
+    min-height: 100dvh;
+    place-items: center;
+  }
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ UTILITY CLASSES ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ GRID LAYOUT ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.grid {
+  /* max-width: 25em; */
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 520px) {
+  .grid {
+    /* max-width: 42em; */
+    max-width: 100%;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.875rem;
+  }
+
+  .header__card {
+    grid-column: span 2;
+  }
+}
+
+@media (min-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .header__card {
+    grid-column: span 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    max-width: 1110px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .header__card {
+    grid-column: 1;
+    grid-row: span 2;
+  }
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ HEADER CARD ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.header__card {
+  background-color: var(--clr-card-background-blue);
+  border-radius: var(--br-card);
+}
+
+.header__top {
+  background-color: var(--clr-card-blue);
+  padding: 2rem;
+  border-radius: var(--br-card);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-picture {
+  height: calc(4rem + 6px);
+  border: 3px solid var(--clr-white);
+  border-radius: 50%;
+}
+
+.header__card h1 {
+  margin-top: 0.25rem;
+}
+
+.header__bottom {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-items: center;
+}
+
+.header__bottom input[type='radio'] {
+  display: none;
+}
+
+.header__bottom-radio {
+  padding-block: 1.5rem;
+}
+
+.header__bottom-radio label {
+  cursor: pointer;
+  transition: var(--transition-default);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .header__bottom-radio label:hover {
+    color: var(--clr-white);
+  }
+}
+
+@media (min-width: 1024px) {
+  .header__top {
+    padding: 2.125rem 1.8125rem 5rem;
+    flex-direction: column;
+    align-items: start;
+    gap: 2.5rem;
+  }
+
+  .profile-picture {
+    height: calc(4.5rem + 6px);
+  }
+
+  .header__bottom {
+    padding: 1.625rem 2rem 2rem 2rem;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    gap: 1.3125rem;
+  }
+
+  .header__bottom-radio {
+    padding-block: 0;
+  }
+}
+
+/* ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ CARD STYLING ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ */
+
+.card {
+  position: relative;
+  height: 10rem;
+  border-radius: var(--br-card);
+  display: flex;
+  align-items: end;
+  overflow: hidden;
+}
+
+.card-background-img {
+  position: absolute;
+}
+
+.card__work {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-orange) 0%,
+    var(--clr-card-orange) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -10.91px;
+    right: 17.42px;
+  }
+}
+
+.card__play {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-aqua) 0%,
+    var(--clr-card-aqua) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -3.91px;
+    right: 20.42px;
+  }
+}
+
+.card__study {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-red) 0%,
+    var(--clr-card-red) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -6.05px;
+    right: 17.07px;
+  }
+}
+
+.card__exercise {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-green) 0%,
+    var(--clr-card-green) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -0.42px;
+    right: 17.62px;
+  }
+}
+
+.card__social {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-purple) 0%,
+    var(--clr-card-purple) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -15.5px;
+    right: 17.42px;
+  }
+}
+
+.card__self-care {
+  background: linear-gradient(
+    to bottom,
+    var(--clr-card-yellow) 0%,
+    var(--clr-card-yellow) 50%,
+    var(--clr-card-background-blue) 50%
+  );
+
+  img {
+    top: -9.91px;
+    right: 17.21px;
+  }
+}
+
+.card__content {
+  width: 100%;
+  position: relative;
+  background-color: var(--clr-card-background-blue);
+  border-radius: var(--br-card);
+  padding: 1.75rem 1.5rem;
+
+  display: grid;
+  grid-template-areas:
+    'card__title card__ellipsis'
+    'current-hours previous-hours';
+  align-items: center;
+  gap: 0.375rem 0.875rem;
+}
+
+.card__title {
+  grid-area: card__title;
+  justify-self: start;
+}
+
+.card__ellipsis {
+  grid-area: card__ellipsis;
+  justify-self: end;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.card__ellipsis svg circle {
+  transition: var(--transition-default);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card__ellipsis:hover svg circle {
+    fill: var(--clr-white);
+  }
+}
+
+.current-hours {
+  grid-area: current-hours;
+  justify-self: start;
+}
+
+.previous-hours {
+  grid-area: previous-hours;
+  justify-self: end;
+}
+
+@media (min-width: 520px) {
+  .card {
+    height: 15.25rem;
+  }
+
+  .card__content {
+    padding: 1.875rem;
+
+    grid-template-areas:
+      'card__title card__ellipsis'
+      'current-hours current-hours'
+      'previous-hours previous-hours';
+    gap: 0.5rem 0;
+  }
+
+  .current-hours {
+    margin-top: 1rem;
+  }
+
+  .previous-hours {
+    justify-self: start;
+  }
+}

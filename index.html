@@ -12,7 +12,15 @@
       href="./images/favicon-32x32.png"
     />
 
+    <link rel="stylesheet" href="styles.css" />
     <script type="module" src="./script.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Frontend Mentor | Time tracking dashboard</title>
   </head>
@@ -20,29 +28,31 @@
     <main>
       <div class="grid">
         <!-- HEADER CARD -->
-        <div id="header__card">
+        <div class="header__card">
           <div class="header__top">
             <img
               src="./images/image-jeremy.png"
               alt="Jeremy Robinson profile picture"
+              class="profile-picture"
             />
-            <div class="header__top-text">
-              <h1>Report for <span>Jeremy Robson</span></h1>
+            <div>
+              <p>Report for</p>
+              <h1>Jeremy Robson</h1>
             </div>
           </div>
           <div class="header__bottom">
             <div class="header__bottom-radio">
-              <input type="radio" id="daily" name="timeFrame" value="daily" />
+              <input
+                type="radio"
+                id="daily"
+                name="timeFrame"
+                value="daily"
+                checked
+              />
               <label for="daily">Daily</label>
             </div>
             <div class="header__bottom-radio">
-              <input
-                type="radio"
-                id="weekly"
-                name="timeFrame"
-                value="weekly"
-                checked
-              />
+              <input type="radio" id="weekly" name="timeFrame" value="weekly" />
               <label for="weekly">Weekly</label>
             </div>
             <div class="header__bottom-radio">
